@@ -271,9 +271,13 @@
     <section class="contact-section">
       <p class="section-label">Get involved</p>
       <h2>Join the community of practice</h2>
-      <p class="contact-sub">Are you a city, evaluator, cultural operator, researcher or policymaker working with ECoC? We would love to hear from you.</p>
+      <p class="contact-sub">Are you a city team member, cultural operator, evaluator, researcher or policymaker working in the frame of European Capitals of Culture? We would love to hear from you.</p>
 
-      <form id="contactForm">
+      <form id="contactForm" action="https://formspree.io/f/mzdyypqw" method="POST">
+
+        <!-- After submission, redirect back to your own page with ?thanks=1 -->
+        <input type="hidden" name="_next" value="https://www.ecoc-portal.eu/?thanks=1">
+
         <div class="form-row">
           <div class="field">
             <label for="name">Name</label>
@@ -327,19 +331,11 @@
   </footer>
 
   <script>
-    document.getElementById('contactForm').addEventListener('submit', function(e) {
-      e.preventDefault();
-      // To activate: replace YOUR_ID with your Formspree form ID
-      // fetch('https://formspree.io/f/YOUR_ID', {
-      //   method: 'POST', body: new FormData(this),
-      //   headers: { 'Accept': 'application/json' }
-      // }).then(() => {
-      //   this.style.display = 'none';
-      //   document.getElementById('successMsg').style.display = 'block';
-      // });
-      this.style.display = 'none';
+    // Show thank-you message if redirected back after Formspree submission
+    if (window.location.search.includes('thanks=1')) {
+      document.getElementById('contactForm').style.display = 'none';
       document.getElementById('successMsg').style.display = 'block';
-    });
+    }
   </script>
 </body>
 </html>
